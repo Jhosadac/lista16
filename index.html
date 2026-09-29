@@ -11,25 +11,56 @@
   <!-- Resplandor de fondo, su color se actualiza según la imagen enfocada -->
   <div id="glow"></div>
 
-  <div class="page">
+  <main class="page">
 
-    <header class="titulo">
-      <h1>Consejo de Facultad · Lista 16</h1>
-      <p>JUNTOS HACEMOS LA DIFERENCIA</p>
-    </header>
+    <!-- ==============================
+         HERO: Título + Carrusel
+         ============================== -->
+    <section class="hero">
+      <header class="titulo">
+        <h1>Consejo de Facultad · Lista 16</h1>
+        <p>JUNTOS HACEMOS LA DIFERENCIA</p>
+      </header>
 
-    <!-- Contenedor del carrusel + flechas -->
-    <div class="carousel-wrapper">
-      <button class="nav-arrow left" id="prevBtn" aria-label="Anterior">‹</button>
-      <div class="carousel" id="carousel"><!-- Las tarjetas se generan por JavaScript --></div>
-      <button class="nav-arrow right" id="nextBtn" aria-label="Siguiente">›</button>
-    </div>
+      <div class="carousel-wrapper">
+        <button class="nav-arrow left" id="prevBtn" aria-label="Anterior">‹</button>
+        <div class="carousel" id="carousel"><!-- Las tarjetas se generan por JavaScript --></div>
+        <button class="nav-arrow right" id="nextBtn" aria-label="Siguiente">›</button>
+      </div>
 
-    <!-- Puntos indicadores -->
-    <div class="dots" id="dots"><!-- Se generan por JavaScript --></div>
+      <div class="dots" id="dots"><!-- Se generan por JavaScript --></div>
 
-    <footer class="credito">Desliza, usa las flechas o el teclado para navegar</footer>
-  </div>
+      <footer class="credito">Desliza, usa las flechas o el teclado para navegar</footer>
+
+      <!-- CTA que invita a bajar a la sección de propuestas -->
+      <a href="#propuestas" class="scroll-cta">
+        <span>Ver nuestras propuestas</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ==============================
+         SECCIÓN DE PROPUESTAS
+         ============================== -->
+    <section class="propuestas" id="propuestas">
+      <header class="propuestas-header">
+        <span class="eyebrow">NUESTRO COMPROMISO</span>
+        <h2>Nuestras Propuestas</h2>
+        <p>16 propuestas concretas para transformar nuestra facultad y acompañar a cada estudiante.</p>
+      </header>
+
+      <div class="categorias" id="categorias"><!-- Se genera por JavaScript --></div>
+
+      <footer class="propuestas-footer">
+        <p>Lista 16 · TEFIEECS · Consejo de Facultad</p>
+      </footer>
+    </section>
+
+  </main>
 
   <!-- Canvas oculto usado únicamente para extraer el color dominante -->
   <canvas id="colorCanvas" style="display:none;"></canvas>
