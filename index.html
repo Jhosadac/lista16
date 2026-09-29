@@ -35,14 +35,18 @@
 
       <footer class="credito">Desliza, usa las flechas o el teclado para navegar</footer>
 
-      <a href="#propuestas" class="scroll-cta">
-        <span>Ver nuestras propuestas</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" aria-hidden="true">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </a>
+      <!-- Mascota + CTA (el botón se superpone sobre la parte inferior de la mascota) -->
+      <div class="cta-block">
+        <img src="assets/mascota16.png" alt="Mascota Lista 16" class="mascota-hero">
+        <a href="#propuestas" class="scroll-cta">
+          <span>Ver nuestras propuestas</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+      </div>
     </section>
 
     <!-- ==============================
@@ -63,11 +67,6 @@
     </section>
 
   </main>
-
-  <!-- Logo mascota fijo en la esquina inferior derecha -->
-  <a href="#propuestas" class="logo-mascota" aria-label="Mascota Lista 16">
-    <img src="assets/mascota16.png" alt="Mascota Lista 16">
-  </a>
 
   <!-- Canvas oculto usado únicamente para extraer el color dominante -->
   <canvas id="colorCanvas" style="display:none;"></canvas>
