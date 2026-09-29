@@ -132,7 +132,7 @@ let autoplayTimer    = null;
 const AUTOPLAY_MS    = 3500;
 
 /* ================================================================
-   1) CONSTRUCCIÓN DINÁMICA DEL CARRUSEL Y LOS PUNTOS
+   1) CONSTRUCCIÓN DEL CARRUSEL Y LOS PUNTOS
    ================================================================ */
 function buildCarousel(){
   CANDIDATOS.forEach((cand, i) => {
@@ -223,21 +223,18 @@ async function precomputeColors(){
   await Promise.all(promises);
 }
 
+/* Aplica el color dominante como glow ambiental del HERO */
 function applyColor(index){
   const c = dominantColors[index];
   if(!c) return;
   const rgb = `rgb(${c.r}, ${c.g}, ${c.b})`;
-  const bgDark = `rgb(${Math.round(c.r*0.18)}, ${Math.round(c.g*0.18)}, ${Math.round(c.b*0.18)})`;
-  root.style.setProperty('--bg-color', bgDark);
   root.style.setProperty('--glow-color', rgb);
 }
 
 /* ================================================================
    3) NAVEGACIÓN DEL CARRUSEL
    ---------------------------------------------------------------
-   IMPORTANTE: usamos carousel.scrollTo() en lugar de scrollIntoView()
-   para NO afectar el scroll vertical de la página. Esto evita el bug
-   de que la página "salte" hacia arriba cada vez que avanza el autoplay.
+   Usamos carousel.scrollTo() para NO afectar el scroll vertical.
    ================================================================ */
 function goToSlide(index){
   index = Math.max(0, Math.min(index, slides.length - 1));
@@ -370,7 +367,6 @@ nextBtn.addEventListener('click', () => { nextSlide(); });
 carousel.addEventListener('scroll', handleScroll, { passive: true });
 
 document.addEventListener('keydown', (e) => {
-  // Solo navega con las flechas si el hero está en pantalla
   if(window.scrollY > window.innerHeight * 0.5) return;
   if(e.key === 'ArrowRight') nextSlide();
   if(e.key === 'ArrowLeft') prevSlide();
