@@ -1,6 +1,5 @@
 /* ================================================================
    DATOS DE LOS CANDIDATOS
-   Las imágenes se cargan desde la carpeta "assets/".
    ================================================================ */
 const CANDIDATOS = [
   { nombre: "Helfer",       src: "assets/imagen1_Helfer.jpg" },
@@ -14,7 +13,6 @@ const CANDIDATOS = [
 
 /* ================================================================
    DATOS DE LAS PROPUESTAS
-   Organizadas por categoría (temática) siguiendo el PDF oficial.
    ================================================================ */
 const PROPUESTAS = [
   {
@@ -173,7 +171,7 @@ function updateCarouselPadding(){
 }
 
 /* ================================================================
-   2) EXTRACCIÓN DE COLOR DOMINANTE CON <canvas>
+   2) EXTRACCIÓN DE COLOR DOMINANTE
    ================================================================ */
 function getDominantColor(imgEl){
   const SIZE = 48;
@@ -235,16 +233,25 @@ function applyColor(index){
 }
 
 /* ================================================================
-   3) LÓGICA DE NAVEGACIÓN DEL CARRUSEL
+   3) NAVEGACIÓN DEL CARRUSEL
+   ---------------------------------------------------------------
+   IMPORTANTE: usamos carousel.scrollTo() en lugar de scrollIntoView()
+   para NO afectar el scroll vertical de la página. Esto evita el bug
+   de que la página "salte" hacia arriba cada vez que avanza el autoplay.
    ================================================================ */
 function goToSlide(index){
   index = Math.max(0, Math.min(index, slides.length - 1));
   currentIndex = index;
-  slides[index].scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'nearest'
+
+  const slide = slides[index];
+  const targetScrollLeft = slide.offsetLeft
+    - (carousel.clientWidth - slide.clientWidth) / 2;
+
+  carousel.scrollTo({
+    left: targetScrollLeft,
+    behavior: 'smooth'
   });
+
   setActive(index);
 }
 
@@ -257,6 +264,9 @@ function setActive(index){
   applyColor(index);
 }
 
+/* ================================================================
+   4) DETECTAR SCROLL MANUAL DEL CARRUSEL
+   ================================================================ */
 let scrollTimeout = null;
 function handleScroll(){
   clearTimeout(scrollTimeout);
@@ -283,7 +293,7 @@ function handleScroll(){
 }
 
 /* ================================================================
-   4) AUTOPLAY
+   5) AUTOPLAY
    ================================================================ */
 function startAutoplay(){
   stopAutoplay();
@@ -295,7 +305,7 @@ function stopAutoplay(){
 }
 
 /* ================================================================
-   5) RENDERIZADO DE LA SECCIÓN DE PROPUESTAS
+   6) RENDER DE PROPUESTAS
    ================================================================ */
 function renderPropuestas(){
   if(!categorias) return;
@@ -306,7 +316,6 @@ function renderPropuestas(){
     const catEl = document.createElement('div');
     catEl.className = 'categoria';
 
-    // Encabezado de la categoría
     const h3 = document.createElement('h3');
 
     const label = document.createElement('span');
@@ -322,7 +331,6 @@ function renderPropuestas(){
 
     catEl.appendChild(h3);
 
-    // Grid de tarjetas
     const grid = document.createElement('div');
     grid.className = 'grid';
 
@@ -354,7 +362,7 @@ function renderPropuestas(){
 }
 
 /* ================================================================
-   6) EVENTOS
+   7) EVENTOS
    ================================================================ */
 prevBtn.addEventListener('click', () => { prevSlide(); });
 nextBtn.addEventListener('click', () => { nextSlide(); });
@@ -363,7 +371,6 @@ carousel.addEventListener('scroll', handleScroll, { passive: true });
 
 document.addEventListener('keydown', (e) => {
   // Solo navega con las flechas si el hero está en pantalla
-  // (evita que el carrusel se mueva mientras lees las propuestas)
   if(window.scrollY > window.innerHeight * 0.5) return;
   if(e.key === 'ArrowRight') nextSlide();
   if(e.key === 'ArrowLeft') prevSlide();
@@ -381,7 +388,7 @@ window.addEventListener('resize', () => {
 });
 
 /* ================================================================
-   7) INICIALIZACIÓN
+   8) INICIALIZACIÓN
    ================================================================ */
 function init(){
   buildCarousel();
