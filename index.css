@@ -85,6 +85,7 @@ html, body{
 
 /* ============================================================
    LOGO UNI — esquina superior izquierda del HERO (scrollea con él)
+   Sin fondo ni contenedor: solo la imagen
    ============================================================ */
 .logo-uni{
   position: absolute;
@@ -269,13 +270,44 @@ footer.credito{
 }
 
 /* ============================================================
-   BOTÓN CTA — GUINDA
+   MASCOTA + BOTÓN CTA
+   La mascota va entre el carrusel y el botón; el botón se
+   superpone sobre la parte inferior de la mascota.
    ============================================================ */
+.cta-block{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.mascota-hero{
+  width: 200px;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.55))
+          drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+  /* Animación suave de "flotar" para darle vida */
+  animation: mascotaFloat 4s ease-in-out infinite;
+}
+
+@keyframes mascotaFloat{
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
 .scroll-cta{
+  position: relative;
+  z-index: 2;              /* queda por encima de la mascota */
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 32px;
+  margin-top: -55px;       /* superpone el botón sobre la mascota */
   padding: 13px 26px;
   font-size: 0.78rem;
   letter-spacing: 2px;
@@ -286,8 +318,8 @@ footer.credito{
   background: var(--guinda);
   border: 1px solid var(--guinda);
   border-radius: 999px;
-  box-shadow: 0 10px 28px rgba(122, 22, 32, 0.4),
-              0 2px 8px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 28px rgba(122, 22, 32, 0.5),
+              0 2px 8px rgba(0, 0, 0, 0.4);
   transition: background 0.3s ease,
               transform 0.3s ease,
               box-shadow 0.3s ease,
@@ -298,8 +330,8 @@ footer.credito{
   background: var(--guinda-dark);
   border-color: var(--guinda-dark);
   transform: translateY(2px);
-  box-shadow: 0 16px 38px rgba(122, 22, 32, 0.55),
-              0 3px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 38px rgba(122, 22, 32, 0.65),
+              0 3px 12px rgba(0, 0, 0, 0.45);
 }
 .scroll-cta svg{
   animation: ctaBounce 2.2s infinite;
@@ -502,48 +534,6 @@ footer.credito{
 }
 
 /* ============================================================
-   LOGO MASCOTA (esquina inferior derecha, fijo)
-   ============================================================ */
-.logo-mascota{
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 84px;
-  height: 84px;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid rgba(122, 22, 32, 0.18);
-  padding: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(42, 26, 30, 0.14),
-              0 2px 6px rgba(42, 26, 30, 0.08);
-  transition: transform 0.35s cubic-bezier(.25,.8,.25,1),
-              box-shadow 0.35s ease,
-              border-color 0.35s ease;
-}
-
-.logo-mascota img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-
-.logo-mascota:hover{
-  transform: translateY(-4px) scale(1.05);
-  border-color: rgba(122, 22, 32, 0.45);
-  box-shadow: 0 14px 34px rgba(122, 22, 32, 0.25),
-              0 4px 10px rgba(42, 26, 30, 0.1);
-}
-
-/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 700px){
@@ -592,22 +582,22 @@ footer.credito{
   .propuesta{
     padding: 20px 18px;
   }
+
+  /* Logo UNI en móvil */
+  .logo-uni{
+    width: 74px;
+    height: 74px;
+    top: 14px;
+    left: 14px;
+  }
+
+  /* Mascota + CTA en móvil */
+  .mascota-hero{
+    width: 150px;
+  }
   .scroll-cta{
+    margin-top: -40px;
     font-size: 0.7rem;
     padding: 11px 20px;
   }
-
-  .logo-uni{
-  width: 74px;
-  height: 74px;
-  top: 14px;
-  left: 14px;
-  }
-  .logo-mascota{
-    width: 60px;
-    height: 60px;
-    right: 12px;
-    bottom: 12px;
-    padding: 6px;
-  }
-   }
+}
