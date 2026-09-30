@@ -283,7 +283,7 @@ footer.credito{
 }
 
 .mascota-hero{
-  width: 200px;
+  width: 250px;
   height: auto;
   display: block;
   position: relative;
@@ -593,10 +593,10 @@ footer.credito{
 
   /* Mascota + CTA en móvil */
   .mascota-hero{
-    width: 150px;
+    width: 190px;
   }
   .scroll-cta{
-    margin-top: -40px;
+    margin-top: -50px;
     font-size: 0.7rem;
     padding: 11px 20px;
   }
