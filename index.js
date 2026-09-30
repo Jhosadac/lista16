@@ -2,7 +2,7 @@
    DATOS DE LOS CANDIDATOS
    ================================================================ */
 const CANDIDATOS = [
-  { nombre: "Helfer",       src: "assets/imagen1_Helfer.jpg" },
+  { nombre: "Helfer",       src: "assets/imagen1_Helfer.png" },
   { nombre: "Bryan",        src: "assets/imagen2_bryan.png" },
   { nombre: "Alexssander",  src: "assets/imagen3_alexssander.png" },
   { nombre: "Pool",         src: "assets/imagen4_pool.png" },
