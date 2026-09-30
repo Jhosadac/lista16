@@ -19,7 +19,7 @@ const PROPUESTAS = [
     categoria: "Infraestructura, tecnología y servicios",
     items: [
       {
-        titulo: 'Habilitación del espacio "Piedritas"',
+        titulo: 'Coordinación para apertura de "Piedritas"',
         texto: 'Se coordinará con el Centro de Estudiantes para apoyar la habilitación y el funcionamiento del espacio "Piedritas" como espacio de descanso y sala de estudio, promoviendo su disponibilidad y aprovechamiento por parte de los estudiantes.'
       },
       {
@@ -27,7 +27,7 @@ const PROPUESTAS = [
         texto: 'Se promoverá la mejora de las condiciones de los servicios higiénicos de la facultad, garantizando su disponibilidad desde las 8:00 am y el abastecimiento permanente de implementos básicos de higiene como jabón.'
       },
       {
-        titulo: 'Continuidad de la modernización del Centro Médico',
+        titulo: 'Espacio para centros culturales',
         texto: 'Se impulsará, mediante el Consejo de Facultad, proponer que los nuevos espacios contemplados en el plan de modernización de la facultad, en el antiguo centro médico, tengan ambientes destinados a los centros culturales de la facultad.'
       }
     ]
