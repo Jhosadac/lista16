@@ -7,7 +7,7 @@ const CANDIDATOS = [
   { nombre: "Alexssander",  src: "assets/imagen3_alexssander.png" },
   { nombre: "Pool",         src: "assets/imagen4_pool.png" },
   { nombre: "Joaquín",      src: "assets/imagen5_joaquin.png" },
-  { nombre: "Kristhel",     src: "assets/imagen6_kristhel.png" },
+  { nombre: "Kristhel",     src: "assets/imagen6_kristhel.jpeg" },
 ];
 
 
