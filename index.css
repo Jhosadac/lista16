@@ -77,15 +77,13 @@ html, body{
   pointer-events: none;
 }
 
-/* Todo el contenido directo del hero queda por encima de las capas */
 .hero > *{
   position: relative;
   z-index: 2;
 }
 
 /* ============================================================
-   LOGO UNI — esquina superior izquierda del HERO (scrollea con él)
-   Sin fondo ni contenedor: solo la imagen
+   LOGO UNI — esquina superior izquierda del HERO
    ============================================================ */
 .logo-uni{
   position: absolute;
@@ -271,8 +269,6 @@ footer.credito{
 
 /* ============================================================
    MASCOTA + BOTÓN CTA
-   La mascota va entre el carrusel y el botón; el botón se
-   superpone sobre la parte inferior de la mascota.
    ============================================================ */
 .cta-block{
   position: relative;
@@ -292,7 +288,6 @@ footer.credito{
   -webkit-user-drag: none;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.55))
           drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
-  /* Animación suave de "flotar" para darle vida */
   animation: mascotaFloat 4s ease-in-out infinite;
 }
 
@@ -303,11 +298,11 @@ footer.credito{
 
 .scroll-cta{
   position: relative;
-  z-index: 2;              /* queda por encima de la mascota */
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: -55px;       /* superpone el botón sobre la mascota */
+  margin-top: -55px;
   padding: 13px 26px;
   font-size: 0.78rem;
   letter-spacing: 2px;
@@ -518,6 +513,164 @@ footer.credito{
   color: var(--text-dark-muted);
 }
 
+/* ============================================================
+   REDES SOCIALES
+   ============================================================ */
+.redes-sociales{
+  margin-top: 80px;
+  padding: 48px 24px 8px;
+  text-align: center;
+}
+
+.redes-title{
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--guinda);
+  margin: 0 0 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.redes-title::before,
+.redes-title::after{
+  content: "";
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--guinda);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+.redes-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ---------- Tarjeta de red social ---------- */
+.red-social{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid rgba(122, 22, 32, 0.1);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text-dark);
+  box-shadow: 0 2px 10px rgba(42, 26, 30, 0.05);
+  transition: transform 0.35s cubic-bezier(.25,.8,.25,1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background 0.35s ease,
+              color 0.35s ease;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+.red-social .red-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(122, 22, 32, 0.07);
+  color: var(--guinda);
+  flex-shrink: 0;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.red-social .red-icon svg{
+  width: 22px;
+  height: 22px;
+}
+
+.red-social .red-info{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.red-social .red-name{
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--text-dark);
+  transition: color 0.35s ease;
+}
+
+.red-social .red-user{
+  font-size: 0.78rem;
+  color: var(--text-dark-muted);
+  transition: color 0.35s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.red-social:hover{
+  transform: translateY(-4px);
+  border-color: rgba(122, 22, 32, 0.25);
+  box-shadow: 0 14px 30px rgba(42, 26, 30, 0.1),
+              0 4px 10px rgba(42, 26, 30, 0.06);
+}
+
+/* ---------- Hover con colores de marca ---------- */
+
+/* Instagram */
+.red-instagram:hover{
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+  border-color: transparent;
+  color: #ffffff;
+}
+.red-instagram:hover .red-icon{
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+.red-instagram:hover .red-name,
+.red-instagram:hover .red-user{
+  color: #ffffff;
+}
+
+/* TikTok */
+.red-tiktok:hover{
+  background: #000000;
+  border-color: transparent;
+  color: #ffffff;
+}
+.red-tiktok:hover .red-icon{
+  background: rgba(255, 255, 255, 0.15);
+  color: #25f4ee;
+}
+.red-tiktok:hover .red-name,
+.red-tiktok:hover .red-user{
+  color: #ffffff;
+}
+
+/* WhatsApp */
+.red-whatsapp:hover{
+  background: #25d366;
+  border-color: transparent;
+  color: #ffffff;
+}
+.red-whatsapp:hover .red-icon{
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+.red-whatsapp:hover .red-name,
+.red-whatsapp:hover .red-user{
+  color: #ffffff;
+}
+
 /* ---------- Footer ---------- */
 .propuestas-footer{
   text-align: center;
@@ -599,5 +752,42 @@ footer.credito{
     margin-top: -50px;
     font-size: 0.7rem;
     padding: 11px 20px;
+  }
+
+  /* Redes sociales en móvil */
+  .redes-sociales{
+    margin-top: 50px;
+    padding: 30px 0 0;
+  }
+  .redes-title{
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+  }
+  .redes-title::before,
+  .redes-title::after{
+    width: 20px;
+  }
+  .redes-grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+  .red-social{
+    padding: 14px 16px;
+  }
+  .red-social .red-icon{
+    width: 40px;
+    height: 40px;
+  }
+  .red-social .red-icon svg{
+    width: 20px;
+    height: 20px;
+  }
+  .red-social .red-name{
+    font-size: 0.88rem;
+  }
+  .red-social .red-user{
+    font-size: 0.74rem;
   }
 }
